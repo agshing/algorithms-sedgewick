@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-class QuickFindUF:
+class QuickFind:
     def __init__(self, n: int) -> None:
         self.n = n
         # id is reserved keyword in python
