@@ -8,12 +8,22 @@ class Stack:
     def __init__(self):
         self.head: Node = None
 
+    """
+    Python alternatives are:
+        list.append() - complexity O(1)
+        deque.append() - complexity O(1)
+    """
     def push(self, item: Any) -> None:
         node = Node()
         node.item = item
         node.next = self.head
         self.head = node
 
+    """
+    Python alternatives are:
+        list.pop() - complexity O(1)
+        deque.pop() - complexity O(1)
+    """
     def pop(self) -> Any:
         if self.is_empty():
             return None
