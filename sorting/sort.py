@@ -36,3 +36,42 @@ def shell_sort(numbers: List[int]) -> List[int]:
                 j -= h
         h = h // 3
     return numbers
+
+
+def merge_sort(numbers: List[int]) -> List[int]:
+    def merge(numbers: List[int], aux: List[int], left: int, mid: int, right: int) -> None:
+        # copy data to aux list
+        for k in range(left, right + 1):
+            aux[k] = numbers[k]
+        # data is sorted between left : mid and mid+1 : right
+        i, j = left, mid + 1
+        for k in range(left, right + 1):
+            if i > mid:
+                numbers[k] = aux[j]
+                j += 1
+            elif j > right:
+                numbers[k] = aux[i]
+                i += 1
+            elif aux[i] > aux[j]:
+                numbers[k] = numbers[j]
+                j += 1
+            else:
+                numbers[k] = aux[i]
+                i += 1
+
+    def sort(numbers: List[int], aux: List[int], left: int, right: int) -> None:
+        if left >= right:
+            return
+        mid = left + (right - left) // 2
+        sort(numbers, aux, left, mid)
+        sort(numbers, aux, mid + 1, right)
+        # if biggest item in the first half is <= smallest item in the second half
+        # then data is already sorted, no need for the merge
+        if numbers[mid] <= numbers[mid + 1]:
+            return
+        merge(numbers, aux, left, mid, right)
+
+    # pass aux list as parameter to prevent creation of new lists
+    aux = numbers[:]
+    sort(numbers, aux, 0, len(numbers) - 1)
+    return numbers

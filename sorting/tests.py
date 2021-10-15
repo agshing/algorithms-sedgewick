@@ -2,7 +2,7 @@
 
 import unittest
 import random
-from sort import insertion_sort, selection_sort, shell_sort
+from sort import *
 
 
 class SortingTests(unittest.TestCase):
@@ -14,6 +14,8 @@ class SortingTests(unittest.TestCase):
         self.assertEqual(insertion_sort(
             random_numbers[:]), sorted(random_numbers))
         self.assertEqual(shell_sort(
+            random_numbers[:]), sorted(random_numbers))
+        self.assertEqual(merge_sort(
             random_numbers[:]), sorted(random_numbers))
 
 
