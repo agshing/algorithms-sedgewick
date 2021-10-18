@@ -17,6 +17,8 @@ class SortingTests(unittest.TestCase):
             random_numbers[:]), sorted(random_numbers))
         self.assertEqual(merge_sort(
             random_numbers[:]), sorted(random_numbers))
+        self.assertEqual(quick_sort(
+            random_numbers[:]), sorted(random_numbers))
 
 
 if __name__ == '__main__':

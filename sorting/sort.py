@@ -75,3 +75,36 @@ def merge_sort(numbers: List[int]) -> List[int]:
     aux = numbers[:]
     sort(numbers, aux, 0, len(numbers) - 1)
     return numbers
+
+
+def quick_sort(numbers: List[int]) -> List[int]:
+    def partition(numbers: List[int], left: int, right: int) -> int:
+        i, j = left, right + 1
+        while True:
+            # find item on the left to swap
+            i += 1
+            while i < right and numbers[left] > numbers[i]:
+                i += 1
+            # find item on the right to swap
+            j -= 1
+            while j > left and numbers[left] < numbers[j]:
+                j -= 1
+            # if pointers cross then break
+            if i >= j:
+                break
+            # swap items
+            numbers[i], numbers[j] = numbers[j], numbers[i]
+        # swap with partitioning item
+        numbers[left], numbers[j] = numbers[j], numbers[left]
+        # return index of item known to be in place
+        return j
+
+    def sort(numbers: List[int], left: int, right: int) -> None:
+        if left >= right:
+            return
+        partition_index = partition(numbers, left, right)
+        sort(numbers, left, partition_index - 1)
+        sort(numbers, partition_index + 1, right)
+
+    sort(numbers, 0, len(numbers) - 1)
+    return numbers
