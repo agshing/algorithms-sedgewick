@@ -6,7 +6,7 @@ import string
 from pq import *
 
 
-class SortingTests(unittest.TestCase):
+class PQTests(unittest.TestCase):
     def test_pq(self):
         capacity = 10
         pq = MaxPQ(capacity)
