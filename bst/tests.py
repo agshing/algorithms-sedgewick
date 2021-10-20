@@ -22,6 +22,10 @@ class BSTTests(unittest.TestCase):
         self.assertEqual(bst.floor("P"), "P")
         # check floor for non existing node
         self.assertEqual(bst.floor("G"), "E")
+        # test delete
+        for key, _ in key_val_lst:
+            bst.delete(key)
+            self.assertEqual(bst.get(key), None)
 
 
 if __name__ == '__main__':

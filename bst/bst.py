@@ -41,7 +41,35 @@ class BST:
         return None
 
     def delete(self, key: Any) -> None:
-        pass
+        def min_node(x: Node) -> Node:
+            if x.left is None:
+                return x
+            return min_node(x.left)
+
+        def delete_node(x: Node, key: Any) -> Optional[Node]:
+            if x is None:
+                return None
+            if key < x.key:
+                x.left = delete_node(x.left, key)
+            elif key > x.key:
+                x.right = delete_node(x.right, key)
+            else:
+                # found the node
+                # if right node is None return left node
+                if x.right is None:
+                    return x.left
+                # if left node is None return right node
+                if x.left is None:
+                    return x.right
+                # if both nodes exist, replace  with successor
+                t = x
+                # get the min node from the right branch
+                x = min_node(t.right)
+                x.right = self.__delete_min(t.right)
+                x.left = t.left
+            return x
+
+        self.root = delete_node(self.root, key)
 
     def floor(self, key: Any) -> Optional[Any]:
         def floor_node(x: Node, key: Any) -> Node:
@@ -68,3 +96,12 @@ class BST:
         result = []
         traverse(self.root, result)
         return result
+
+    def delete_min(self) -> None:
+        self.root = self.__delete_min(self.root)
+
+    def __delete_min(self, x: Node):
+            if x.left == None:
+                return x.right
+            x.left = self.__delete_min(x.left)
+            return x
