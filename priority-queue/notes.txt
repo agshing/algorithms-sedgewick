@@ -1,11 +1,12 @@
 * heapq - This is a binary heap implementation usually backed by a plain list,
 and it supports insertion and extraction of the smallest element in O(log n)
 By default it is a min queue
-- import heapq q = []
-- heapq.heappush(q, (2, 'code')) 
-- heapq.heappush(q, (1, 'eat')) 
-- heapq.heappush(q, (3, 'sleep'))
-- heapq.heappop(q) # (1, 'eat')
+>>> import heapq 
+>>> q = []
+>>> heapq.heappush(q, (2, 'code')) 
+>>> heapq.heappush(q, (1, 'eat')) 
+>>> heapq.heappush(q, (3, 'sleep'))
+>>> heapq.heappop(q) # (1, 'eat')
 To use custom objects in heapq, you can either utilise tuples or override __lt__ method:
 >>> import heapq
 >>> class MyObject(object):
@@ -18,9 +19,9 @@ To use custom objects in heapq, you can either utilise tuples or override __lt__
 the same time and space complexities. The difference is that PriorityQueue is synchronized 
 and provides locking semantics to support multiple concurrent producers and consumers.
 By default it is a min queue
-- from queue import PriorityQueue 
-- q = PriorityQueue()
-- q.put((2, 'code')) 
-- q.put((1, 'eat')) 
-- q.put((3, 'sleep'))
-- q.get() # (1, 'eat')
+>>> from queue import PriorityQueue 
+>>> q = PriorityQueue()
+>>> q.put((2, 'code')) 
+>>> q.put((1, 'eat')) 
+>>> q.put((3, 'sleep'))
+>>> q.get() # (1, 'eat')
