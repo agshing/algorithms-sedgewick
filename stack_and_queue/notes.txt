@@ -1,0 +1,20 @@
+In python for queue and stack, if you are not looking for parallel processing support, 
+your choice comes down to the built-in list type or collections.deque:
+
+* list is backed by a dynamic array which makes it great for fast random access, 
+but requires occasional resizing when elements are added or removed. 
+The list over-allocates its backing storage so that not every push or pop requires resizing, 
+and you get an amortized O(1) time complexity for these operations. 
+But you do need to be careful to only insert and remove items “from the right side” using append() and pop().
+Otherwise, performance slows down to O(n).
+- list.append() - complexity O(1)
+- list.pop() - complexity O(1)
+- list.pop(0) - complexity O(n)
+
+* collections.deque is backed by a doublylinked list which optimizes appends and deletes at both ends 
+and provides consistent O(1) performance for these operations. Not only is its performance more stable, 
+the deque class is also easier to use because you don’t have to worry about adding or removing items 
+from “the wrong end.” 
+- deque.append() - complexity O(1)
+- deque.pop() - complexity O(1)
+- deque.popleft() - complexity O(1)

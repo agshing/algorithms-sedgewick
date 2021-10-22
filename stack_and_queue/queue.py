@@ -9,11 +9,6 @@ class Queue:
         self.head: Node = None
         self.tail: Node = None
 
-    """
-    Python alternatives are:
-        list.append() - complexity O(1)
-        deque.append() - complexity O(1)
-    """
     def enqueue(self, item: Any) -> None:
         node = Node()
         node.item = item
@@ -24,11 +19,6 @@ class Queue:
             self.tail.next = node
             self.tail = node
 
-    """
-    Python alternatives are:
-        list.pop(0) - complexity O(n)
-        deque.popleft() - complexity O(1)
-    """
     def dequeue(self) -> Any:
         if self.is_empty():
             return None
